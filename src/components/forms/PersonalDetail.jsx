@@ -19,7 +19,7 @@ function PersonalDetail() {
         </div>
 
         <div className="section__group">
-          <h2>Links</h2>
+          <h1 className="section__title">Links</h1>
 
           <label htmlFor="personal-linkedin">LinkedIn</label>
           <input type="url" id="personal-linkedin" className="input-field" />

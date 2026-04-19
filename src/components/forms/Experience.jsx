@@ -25,6 +25,18 @@ function Experience({ cvdata, setCvData }) {
     });
   };
 
+  const handleDelete = (index) => {
+    if (cvdata.experience.length === 1) return;
+
+    const updatedExperience = cvdata.experience.filter(
+      (_, i) => i !== index
+    );
+    setCvData({
+      ...cvdata,
+      experience: updatedExperience,
+    });
+  }
+
   return (
     <form className="section experience" id="experience-section">
       <h1 className="section__title">Experience</h1>
@@ -91,6 +103,14 @@ function Experience({ cvdata, setCvData }) {
               handleChange(index, "description", e.target.value) // ✅ fixed
             }
           ></textarea>
+          <button
+              type="button"
+              className="btn btn--danger"
+              onClick={() => handleDelete(index)}
+              disabled={cvdata.experience.length === 1}
+            >
+              Delete
+            </button>
         </div>
       ))}
 

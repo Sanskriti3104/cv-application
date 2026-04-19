@@ -22,6 +22,18 @@ function Skills({ cvdata, setCvData }) {
     });
   };
 
+  const handleDelete = (index) => {
+    if (cvdata.skills.length === 1) return;
+
+    const updatedSkills = cvdata.skills.filter(
+      (_, i) => i !== index
+    );
+    setCvData({
+      ...cvdata,
+      skills: updatedSkills,
+    });
+  };
+
   return (
     <form className="section skills" id="skills-section">
       <h1 className="section__title">Skills</h1>
@@ -47,6 +59,14 @@ function Skills({ cvdata, setCvData }) {
               handleChange(index, 'skillItems', e.target.value)
             }
           />
+          <button
+            type="button"
+            className="btn btn--danger"
+            onClick={() => handleDelete(index)}
+            disabled={cvdata.skills.length === 1}
+          >
+            Delete
+          </button>
         </div>
       ))}
 

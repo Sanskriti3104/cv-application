@@ -17,10 +17,23 @@ function Education({ cvdata, setCvData }) {
         {
           institute: "",
           degree: "",
+          marks: "",
           start: "",
           end: "",
         },
       ],
+    });
+  };
+
+  const handleDelete = (index) => {
+    if (cvdata.education.length === 1) return;
+
+    const updatedEducation = cvdata.education.filter(
+      (_, i) => i !== index
+    );
+    setCvData({
+      ...cvdata,
+      education: updatedEducation,
     });
   };
 
@@ -85,6 +98,14 @@ function Education({ cvdata, setCvData }) {
               />
             </div>
           </div>
+          <button
+              type="button"
+              className="btn btn--danger"
+              onClick={() => handleDelete(index)}
+              disabled={cvdata.education.length === 1}
+            >
+              Delete
+            </button>
         </div>
       ))}
 

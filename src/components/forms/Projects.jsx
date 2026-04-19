@@ -24,6 +24,19 @@ function Projects({ cvdata, setCvData }) {
     });
   };
 
+  const handleDelete = (index) => {
+    if (cvdata.projects.length === 1) return;
+
+    const updatedProjects = cvdata.projects.filter(
+      (_, i) => i !== index
+    );
+
+    setCvData({
+      ...cvdata,
+      projects: updatedProjects,
+    });
+  };
+
   return (
     <form className="section projects" id="projects-section">
       <h1 className="section__title">Projects</h1>
@@ -73,8 +86,17 @@ function Projects({ cvdata, setCvData }) {
               handleChange(index, "live", e.target.value)
             }
           />
+
+          <button
+            type="button"
+            className="btn btn--danger"
+            onClick={() => handleDelete(index)}
+            disabled={cvdata.projects.length === 1}
+          >
+            Delete
+          </button>
         </div>
-      ))} 
+      ))}
 
       <div className="section__actions">
         <button

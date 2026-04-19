@@ -1,10 +1,15 @@
-function ProjectsPreview({cvdata}){
-    return(
+function ProjectsPreview({ cvdata }) {
+    return (
         <div>
-            <p>Project Title: {cvdata.projects.title}</p>
-            <p>Description: {cvdata.projects.description}</p>
-            <p>GitHub: {cvdata.projects.github}</p>
-            <p>Live Preview: {cvdata.projects.live}</p>
+            {cvdata.projects.map((project, index) => (
+                <div key={index}>
+                    <p>Project Title: {project.title}</p>
+                    <p>Description: {project.description}</p>
+                    <p>GitHub: {project.github}</p>
+                    <p>Live Preview: {project.live}</p>
+                    <hr />
+                </div>
+            ))}
         </div>
     );
 }

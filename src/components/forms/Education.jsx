@@ -1,31 +1,104 @@
 function Education({ cvdata, setCvData }) {
+  const handleChange = (index, field, value) => {
+    const updatedEducation = [...cvdata.education];
+    updatedEducation[index][field] = value;
+
+    setCvData({
+      ...cvdata,
+      education: updatedEducation,
+    });
+  };
+
+  const handleAdd = () => {
+    setCvData({
+      ...cvdata,
+      education: [
+        ...cvdata.education,
+        {
+          institute: "",
+          degree: "",
+          start: "",
+          end: "",
+        },
+      ],
+    });
+  };
+
   return (
     <form className="section education" id="education-section">
       <h1 className="section__title">Education</h1>
 
-      <div className="section__form">
-        <label htmlFor="edu-institute">Institute</label>
-        <input type="text" id="edu-institute" className="input-field" value={cvdata.education.institute} onChange={(e) => setCvData({...cvdata,education:{...cvdata.education,institute:e.target.value}})} />
+      {cvdata.education.map((edu, index) => (
+        <div className="section__form" key={index}>
+          <label>Institute</label>
+          <input
+            type="text"
+            className="input-field"
+            value={edu.institute}
+            onChange={(e) =>
+              handleChange(index, "institute", e.target.value)
+            }
+          />
 
-        <label htmlFor="edu-degree">Degree</label>
-        <input type="text" id="edu-degree" className="input-field" value={cvdata.education.degree} onChange={(e) => setCvData({...cvdata,education:{...cvdata.education,degree:e.target.value}})} />
+          <label>Degree</label>
+          <input
+            type="text"
+            className="input-field"
+            value={edu.degree}
+            onChange={(e) =>
+              handleChange(index, "degree", e.target.value)
+            }
+          />
 
-        <div className="section__row">
-          <div>
-            <label htmlFor="edu-start">Start Year</label>
-            <input type="date" id="edu-start" className="input-field" value={cvdata.education.start} onChange={(e) => setCvData({...cvdata,education:{...cvdata.education,start:e.target.value}})} />
-          </div>
+          <label>Marks</label>
+          <input
+            type="text"
+            className="input-field"
+            value={edu.marks}
+            onChange={(e) =>
+              handleChange(index, "marks", e.target.value)
+            }
+          />
 
-          <div>
-            <label htmlFor="edu-end">End Year</label>
-            <input type="date" id="edu-end" className="input-field" value={cvdata.education.end} onChange={(e) => setCvData({...cvdata,education:{...cvdata.education,end:e.target.value}})} />
+          <div className="section__row">
+            <div>
+              <label>Start Year</label>
+              <input
+                type="date"
+                className="input-field"
+                value={edu.start}
+                onChange={(e) =>
+                  handleChange(index, "start", e.target.value)
+                }
+              />
+            </div>
+
+            <div>
+              <label>End Year</label>
+              <input
+                type="date"
+                className="input-field"
+                value={edu.end}
+                onChange={(e) =>
+                  handleChange(index, "end", e.target.value)
+                }
+              />
+            </div>
           </div>
         </div>
-      </div>
+      ))}
 
       <div className="section__actions">
-        <button type="button" className="btn btn--secondary">Add</button>
-        <button type="submit" className="btn btn--primary">Submit</button>
+        <button
+          type="button"
+          className="btn btn--secondary"
+          onClick={handleAdd}
+        >
+          Add
+        </button>
+        <button type="submit" className="btn btn--primary">
+          Submit
+        </button>
       </div>
     </form>
   );

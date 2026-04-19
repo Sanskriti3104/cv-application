@@ -1,11 +1,17 @@
 function EducationPreview({ cvdata }) {
-    return (
-        <div>
-            <p>Institute: {cvdata.education.institute}</p>
-            <p>Degree: {cvdata.education.degree}</p>
-            <p>Start Year: {cvdata.education.start}</p>
-            <p>End Year: {cvdata.education.end}</p>
+  return (
+    <div>
+      {cvdata.education.map((edu, index) => (
+        <div key={index}>
+          <p>Institute: {edu.institute}</p>
+          <p>Degree: {edu.degree}</p>
+          <p>Marks: {edu.marks}</p>
+          <p>Start Year: {edu.start}</p>
+          <p>End Year: {edu.end}</p>
+          <hr />
         </div>
-    );
+      ))}
+    </div>
+  );
 }
 export default EducationPreview;

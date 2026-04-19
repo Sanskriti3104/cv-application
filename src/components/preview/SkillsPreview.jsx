@@ -1,8 +1,13 @@
 function SkillsPreview({ cvdata }) {
   return (
     <div>
-        <p>Category: {cvdata.skills.category}</p>
-        <p>Skills: {cvdata.skills.skillItems}</p>
+      {cvdata.skills.map((skill, index) => (
+        <div key={index}>
+          <p>Category: {skill.category}</p>
+          <p>Skills: {skill.skillItems}</p>
+          <hr />
+        </div>
+      ))}
     </div>
   );
 }

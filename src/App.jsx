@@ -28,6 +28,7 @@ function App() {
     education: [{
       institute: "",
       degree: "",
+      marks: "",
       start: "",
       end: "",
     },

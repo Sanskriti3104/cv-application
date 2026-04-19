@@ -1,34 +1,110 @@
 function Experience({ cvdata, setCvData }) {
+  const handleChange = (index, field, value) => {
+    const updateExperience = [...cvdata.experience];
+    updateExperience[index][field] = value;
+
+    setCvData({
+      ...cvdata,
+      experience: updateExperience, // ✅ fixed
+    });
+  };
+
+  const handleAdd = () => {
+    setCvData({
+      ...cvdata,
+      experience: [
+        ...cvdata.experience,
+        {
+          company: "",
+          role: "",
+          start: "",
+          end: "",
+          description: "",
+        },
+      ],
+    });
+  };
+
   return (
     <form className="section experience" id="experience-section">
       <h1 className="section__title">Experience</h1>
 
-      <div className="section__form">
-        <label htmlFor="exp-company">Company</label>
-        <input type="text" id="exp-company" className="input-field" value={cvdata.experience.company} onChange={(e) => {setCvData({...cvdata, experience: {...cvdata.experience, company: e.target.value}})}}/>
+      {cvdata.experience.map((exp, index) => (
+        <div className="section__form" key={index}>
+          <label htmlFor="exp-company">Company</label>
+          <input
+            type="text"
+            id="exp-company"
+            className="input-field"
+            value={exp.company}
+            onChange={(e) =>
+              handleChange(index, "company", e.target.value)
+            }
+          />
 
-        <label htmlFor="exp-role">Role</label>
-        <input type="text" id="exp-role" className="input-field" value={cvdata.experience.role} onChange={(e) => {setCvData({...cvdata, experience: {...cvdata.experience, role: e.target.value}})}}/>
+          <label htmlFor="exp-role">Role</label>
+          <input
+            type="text"
+            id="exp-role"
+            className="input-field"
+            value={exp.role}
+            onChange={(e) =>
+              handleChange(index, "role", e.target.value)
+            }
+          />
 
-        <div className="section__row">
-          <div>
-            <label htmlFor="exp-start">Start Year</label>
-            <input type="date" id="exp-start" className="input-field" value={cvdata.experience.start} onChange={(e) => {setCvData({...cvdata, experience: {...cvdata.experience, start: e.target.value}})}}/>
+          <div className="section__row">
+            <div>
+              <label htmlFor="exp-start">Start Year</label>
+              <input
+                type="date"
+                id="exp-start"
+                className="input-field"
+                value={exp.start}
+                onChange={(e) =>
+                  handleChange(index, "start", e.target.value)
+                }
+              />
+            </div>
+
+            <div>
+              <label htmlFor="exp-end">End Year</label>
+              <input
+                type="date"
+                id="exp-end"
+                className="input-field"
+                value={exp.end}
+                onChange={(e) =>
+                  handleChange(index, "end", e.target.value)
+                }
+              />
+            </div>
           </div>
 
-          <div>
-            <label htmlFor="exp-end">End Year</label>
-            <input type="date" id="exp-end" className="input-field" value={cvdata.experience.end} onChange={(e) => {setCvData({...cvdata, experience: {...cvdata.experience, end: e.target.value}})}}/>
-          </div>
+          <label htmlFor="exp-description">Description</label>
+          <textarea
+            id="exp-description"
+            rows="5"
+            className="input-field"
+            value={exp.description}
+            onChange={(e) =>
+              handleChange(index, "description", e.target.value) // ✅ fixed
+            }
+          ></textarea>
         </div>
-
-        <label htmlFor="exp-description">Description</label>
-        <textarea id="exp-description" rows="5" className="input-field" value={cvdata.experience.description} onChange={(e) => {setCvData({...cvdata, experience: {...cvdata.experience, description: e.target.value}})}}></textarea>
-      </div>
+      ))}
 
       <div className="section__actions">
-        <button type="button" className="btn btn--secondary">Add</button>
-        <button type="submit" className="btn btn--primary">Submit</button>
+        <button
+          type="button"
+          className="btn btn--secondary"
+          onClick={handleAdd}
+        >
+          Add
+        </button>
+        <button type="submit" className="btn btn--primary">
+          Submit
+        </button>
       </div>
     </form>
   );

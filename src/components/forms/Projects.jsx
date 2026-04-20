@@ -1,41 +1,12 @@
+import useDynamicSection from "../../hooks/useDynamicSection";
+
 function Projects({ cvdata, setCvData }) {
-  const handleChange = (index, field, value) => {
-    const updatedProjects = [...cvdata.projects];
-    updatedProjects[index][field] = value;
-
-    setCvData({
-      ...cvdata,
-      projects: updatedProjects,
-    });
-  };
-
-  const handleAdd = () => {
-    setCvData({
-      ...cvdata,
-      projects: [
-        ...cvdata.projects,
-        {
-          title: "",
-          description: "",
-          github: "",
-          live: "",
-        },
-      ],
-    });
-  };
-
-  const handleDelete = (index) => {
-    if (cvdata.projects.length === 1) return;
-
-    const updatedProjects = cvdata.projects.filter(
-      (_, i) => i !== index
-    );
-
-    setCvData({
-      ...cvdata,
-      projects: updatedProjects,
-    });
-  };
+  const { handleChange, handleAdd, handleDelete } = useDynamicSection(cvdata, setCvData, "projects", {
+    title: "",
+    description: "",
+    github: "",
+    live: "",
+  });
 
   return (
     <form className="section projects" id="projects-section">

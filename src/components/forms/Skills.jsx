@@ -1,38 +1,10 @@
+import useDynamicSection from "../../hooks/useDynamicSection";
+
 function Skills({ cvdata, setCvData }) {
-  const handleChange = (index, field, value) => {
-    const updatedSkills = [...cvdata.skills];
-    updatedSkills[index][field] = value;
-
-    setCvData({
-      ...cvdata,
-      skills: updatedSkills,
-    });
-  };
-
-  const handleAdd = () => {
-    setCvData({
-      ...cvdata,
-      skills: [
-        ...cvdata.skills,
-        {
-          category: '',
-          skillItems: ''
-        },
-      ],
-    });
-  };
-
-  const handleDelete = (index) => {
-    if (cvdata.skills.length === 1) return;
-
-    const updatedSkills = cvdata.skills.filter(
-      (_, i) => i !== index
-    );
-    setCvData({
-      ...cvdata,
-      skills: updatedSkills,
-    });
-  };
+  const { handleChange, handleAdd, handleDelete } = useDynamicSection(cvdata, setCvData, "skills", {
+    category: "",
+    skillItems: "",
+  });
 
   return (
     <form className="section skills" id="skills-section">

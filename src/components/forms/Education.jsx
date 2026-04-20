@@ -1,41 +1,13 @@
+import useDynamicSection from "../../hooks/useDynamicSection";
+
 function Education({ cvdata, setCvData }) {
-  const handleChange = (index, field, value) => {
-    const updatedEducation = [...cvdata.education];
-    updatedEducation[index][field] = value;
-
-    setCvData({
-      ...cvdata,
-      education: updatedEducation,
-    });
-  };
-
-  const handleAdd = () => {
-    setCvData({
-      ...cvdata,
-      education: [
-        ...cvdata.education,
-        {
-          institute: "",
-          degree: "",
-          marks: "",
-          start: "",
-          end: "",
-        },
-      ],
-    });
-  };
-
-  const handleDelete = (index) => {
-    if (cvdata.education.length === 1) return;
-
-    const updatedEducation = cvdata.education.filter(
-      (_, i) => i !== index
-    );
-    setCvData({
-      ...cvdata,
-      education: updatedEducation,
-    });
-  };
+  const { handleChange, handleAdd, handleDelete } = useDynamicSection(cvdata, setCvData, "education", {
+    institute: "",
+    degree: "",
+    marks: "",
+    start: "",
+    end: "",
+  });
 
   return (
     <form className="section education" id="education-section">
@@ -99,13 +71,13 @@ function Education({ cvdata, setCvData }) {
             </div>
           </div>
           <button
-              type="button"
-              className="btn btn--danger"
-              onClick={() => handleDelete(index)}
-              disabled={cvdata.education.length === 1}
-            >
-              Delete
-            </button>
+            type="button"
+            className="btn btn--danger"
+            onClick={() => handleDelete(index)}
+            disabled={cvdata.education.length === 1}
+          >
+            Delete
+          </button>
         </div>
       ))}
 

@@ -1,41 +1,13 @@
+import useDynamicSection from "../../hooks/useDynamicSection";
+
 function Experience({ cvdata, setCvData }) {
-  const handleChange = (index, field, value) => {
-    const updateExperience = [...cvdata.experience];
-    updateExperience[index][field] = value;
-
-    setCvData({
-      ...cvdata,
-      experience: updateExperience, // ✅ fixed
-    });
-  };
-
-  const handleAdd = () => {
-    setCvData({
-      ...cvdata,
-      experience: [
-        ...cvdata.experience,
-        {
-          company: "",
-          role: "",
-          start: "",
-          end: "",
-          description: "",
-        },
-      ],
-    });
-  };
-
-  const handleDelete = (index) => {
-    if (cvdata.experience.length === 1) return;
-
-    const updatedExperience = cvdata.experience.filter(
-      (_, i) => i !== index
-    );
-    setCvData({
-      ...cvdata,
-      experience: updatedExperience,
-    });
-  }
+  const { handleChange, handleAdd, handleDelete } = useDynamicSection(cvdata, setCvData, "experience", {
+    company: "",
+    role: "",
+    start: "",
+    end: "",
+    description: "",
+  });
 
   return (
     <form className="section experience" id="experience-section">

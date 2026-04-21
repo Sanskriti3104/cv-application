@@ -41,10 +41,12 @@ function Experience({ cvdata, setCvData }) {
             <div>
               <label htmlFor="exp-start">Start Year</label>
               <input
-                type="date"
+                type="number"
                 id="exp-start"
                 className="input-field"
                 value={exp.start}
+                min={1900}
+                max={2099}
                 onChange={(e) =>
                   handleChange(index, "start", e.target.value)
                 }
@@ -54,10 +56,12 @@ function Experience({ cvdata, setCvData }) {
             <div>
               <label htmlFor="exp-end">End Year</label>
               <input
-                type="date"
+                type="number"
                 id="exp-end"
                 className="input-field"
                 value={exp.end}
+                min={1900}
+                max={2099}
                 onChange={(e) =>
                   handleChange(index, "end", e.target.value)
                 }

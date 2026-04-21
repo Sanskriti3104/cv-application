@@ -49,9 +49,11 @@ function Education({ cvdata, setCvData }) {
             <div>
               <label>Start Year</label>
               <input
-                type="date"
+                type="number"
                 className="input-field"
                 value={edu.start}
+                min={1900}
+                max={2099}
                 onChange={(e) =>
                   handleChange(index, "start", e.target.value)
                 }
@@ -61,9 +63,11 @@ function Education({ cvdata, setCvData }) {
             <div>
               <label>End Year</label>
               <input
-                type="date"
+                type="number"
                 className="input-field"
                 value={edu.end}
+                min={1900}
+                max={2099}
                 onChange={(e) =>
                   handleChange(index, "end", e.target.value)
                 }

@@ -7,12 +7,7 @@ import Experience from "./components/forms/Experience.jsx";
 import Skills from "./components/forms/Skills.jsx";
 import Projects from "./components/forms/Projects.jsx";
 
-import PersonalPreview from "./components/preview/PersonalPreview";
-import ProfessionalPreview from "./components/preview/ProfessionalPreview";
-import EducationPreview from "./components/preview/EducationPreview";
-import ExperiencePreview from "./components/preview/ExperiencePreview";
-import SkillsPreview from "./components/preview/SkillsPreview";
-import ProjectsPreview from "./components/preview/ProjectsPreview";
+import Preview from "./components/preview/Preview.jsx"
 
 function App() {
   const [cvdata, setCvData] = useState({
@@ -64,15 +59,7 @@ function App() {
         <Projects cvdata={cvdata} setCvData={setCvData} />
       </div>
 
-      <div className="preview-container">
-        <h1>Preview</h1>
-        <PersonalPreview cvdata={cvdata} />
-        <ProfessionalPreview cvdata={cvdata} />
-        <EducationPreview cvdata={cvdata} />
-        <ExperiencePreview cvdata={cvdata} />
-        <SkillsPreview cvdata={cvdata} />
-        <ProjectsPreview cvdata={cvdata} />
-      </div>
+      <Preview cvdata = {cvdata} />
     </div>
   );
 }

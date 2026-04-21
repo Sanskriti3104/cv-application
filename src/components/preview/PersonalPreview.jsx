@@ -1,12 +1,26 @@
 function PersonalPreview({ cvdata }) {
+    const p = cvdata.personal;
+
     return (
-        <div>
-            <p>Name: {cvdata.personal.name}</p>
-            <p>Place: {cvdata.personal.place}</p>
-            <p>Email: {cvdata.personal.email}</p>
-            <p>Phone: {cvdata.personal.phone}</p>
-            <p>LinkedIn: {cvdata.personal.linkedin}</p>
-            <p>GitHub: {cvdata.personal.github}</p>
+        <div className="preview__header">
+            <div className="preview__name">
+                {p.name || "Your Name"}
+            </div>
+            <div className="preview__contact">
+                {p.place && <span>{p.place} | </span>}
+                {p.email && <span>{p.email} | </span>}
+                {p.phone && <span>{p.phone} | </span>}
+                {p.github && (
+                    <a href={p.github} target="_blank" rel="noreferrer">
+                        GitHub |
+                    </a>
+                )}{" "}
+                {p.linkedin && (
+                    <a href={p.linkedin} target="_blank" rel="noreferrer">
+                        LinkedIn
+                    </a>
+                )}
+            </div>
         </div>
     );
 }

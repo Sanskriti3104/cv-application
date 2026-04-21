@@ -21,20 +21,22 @@ function ExperiencePreview({ cvdata }) {
                 {hasRole && (hasStart || hasEnd) && " | "}
 
                 {(hasStart || hasEnd) &&
-                  `${hasStart || ""}${
-                    hasStart && hasEnd ? " - " : ""
+                  `${hasStart || ""}${hasStart && hasEnd ? " - " : ""
                   }${hasEnd || ""}`}
               </div>
             )}
 
             {exp.description && (
-              <ul className="preview__list">
-                {exp.description.split(".").map((point, i) =>
-                  point.trim() ? (
-                    <li key={i}>{point.trim()}.</li>
-                  ) : null
-                )}
-              </ul>
+              <div>
+                {exp.description
+                  .split("\n")
+                  .filter((line) => line.trim() !== "")
+                  .map((point, i) => (
+                    <div key={i} className="preview__item">
+                      • {point}
+                    </div>
+                  ))}
+              </div>
             )}
           </div>
         );

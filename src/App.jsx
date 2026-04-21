@@ -46,9 +46,9 @@ function App() {
       github: "",
       live: "",
     }],
-    achievements: [{
+    achievements: {
       description: "",
-    }],
+    },
   });
 
   return (

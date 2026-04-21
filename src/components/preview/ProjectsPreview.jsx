@@ -9,11 +9,18 @@ function ProjectsPreview({ cvdata }) {
         <div key={index} className="preview__item">
           <div className="preview__bold">{project.title}</div>
 
-          <ul className="preview__list">
-            {project.description?.split(".").map((point, i) => (
-              point.trim() && <li key={i}>{point}</li>
-            ))}
-          </ul>
+          {project.description && (
+            <div>
+              {project.description
+                .split("\n")
+                .filter((line) => line.trim() !== "")
+                .map((point, i) => (
+                  <div key={i} className="preview__item">
+                    • {point}
+                  </div>
+                ))}
+            </div>
+          )}
 
           <div className="preview__text">
             {project.github && (

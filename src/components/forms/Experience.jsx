@@ -68,11 +68,11 @@ function Experience({ cvdata, setCvData }) {
           <label htmlFor="exp-description">Description</label>
           <textarea
             id="exp-description"
-            rows="5"
+            rows={5}
             className="input-field"
             value={exp.description}
             onChange={(e) =>
-              handleChange(index, "description", e.target.value) // ✅ fixed
+              handleChange(index, "description", e.target.value) 
             }
           ></textarea>
           <button

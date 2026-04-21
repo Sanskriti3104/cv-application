@@ -3,22 +3,21 @@ function Achievements({ cvdata, setCvData }) {
     const handleChange = (value) => {
         setCvData({
             ...cvdata,
-            achievements: [
-                {
-                    description: value,
-                },
-            ],
+            achievements:
+            {
+                description: value,
+            },
         });
     };
 
     return (
         <form className="section achievements" id="achievements-section">
-            <h1 className="section__title">Achievements</h1>
-            
+            <h1 className="section__title">Achievements & Certifications</h1>
+
             <div className="section__form">
                 <textarea
                     className="input-field"
-                    value={cvdata.achievements[0].description}
+                    value={cvdata.achievements.description}
                     onChange={(e) => handleChange(e.target.value)}
                     rows={5}
                 />

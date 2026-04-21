@@ -28,7 +28,7 @@ function Projects({ cvdata, setCvData }) {
           <label htmlFor="proj-description">Description</label>
           <textarea
             id="proj-description"
-            rows="5"
+            rows={5}
             className="input-field"
             value={project.description}
             onChange={(e) =>

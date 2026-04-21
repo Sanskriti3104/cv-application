@@ -6,6 +6,7 @@ import Education from "./components/forms/Education.jsx";
 import Experience from "./components/forms/Experience.jsx";
 import Skills from "./components/forms/Skills.jsx";
 import Projects from "./components/forms/Projects.jsx";
+import Achievements from "./components/forms/Achievements.jsx";
 
 import Preview from "./components/preview/Preview.jsx"
 
@@ -44,7 +45,10 @@ function App() {
       description: "",
       github: "",
       live: "",
-    }]
+    }],
+    achievements: [{
+      description: "",
+    }],
   });
 
   return (
@@ -57,6 +61,7 @@ function App() {
         <Experience cvdata={cvdata} setCvData={setCvData} />
         <Skills cvdata={cvdata} setCvData={setCvData} />
         <Projects cvdata={cvdata} setCvData={setCvData} />
+        <Achievements cvdata={cvdata} setCvData={setCvData} />
       </div>
 
       <Preview cvdata = {cvdata} />

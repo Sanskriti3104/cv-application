@@ -4,6 +4,7 @@ import EducationPreview from "./EducationPreview";
 import ExperiencePreview from "./ExperiencePreview";
 import SkillsPreview from "./SkillsPreview";
 import ProjectsPreview from "./ProjectsPreview";
+import AchievementsPreview from "./AchievementsPreview";
 
 function Preview({ cvdata }) {
   return (
@@ -19,6 +20,7 @@ function Preview({ cvdata }) {
         <ExperiencePreview cvdata={cvdata} />
         <SkillsPreview cvdata={cvdata} />
         <ProjectsPreview cvdata={cvdata} />
+        <AchievementsPreview cvdata={cvdata} />
       </div>
     </div>
   );

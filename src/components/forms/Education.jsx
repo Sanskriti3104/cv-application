@@ -28,6 +28,7 @@ function Education({ cvdata, setCvData }) {
           <input
             type="text"
             className="input-field"
+            placeholder="Enter institute name"
             value={edu.institute}
             onChange={(e) =>
               handleChange(index, "institute", e.target.value)
@@ -38,16 +39,18 @@ function Education({ cvdata, setCvData }) {
           <input
             type="text"
             className="input-field"
+            placeholder="Enter degree (e.g., B.Tech in CSE)"
             value={edu.degree}
             onChange={(e) =>
               handleChange(index, "degree", e.target.value)
             }
           />
 
-          <label>Marks</label>
+          <label>C.G.P.A.</label> 
           <input
             type="text"
             className="input-field"
+            placeholder="Enter CGPA"
             value={edu.marks}
             onChange={(e) =>
               handleChange(index, "marks", e.target.value)
@@ -60,6 +63,7 @@ function Education({ cvdata, setCvData }) {
               <input
                 type="number"
                 className="input-field"
+                placeholder="e.g., 2021"
                 value={edu.start}
                 min={1900}
                 max={2099}
@@ -74,6 +78,7 @@ function Education({ cvdata, setCvData }) {
               <input
                 type="number"
                 className="input-field"
+                placeholder="e.g., 2025"
                 value={edu.end}
                 min={1900}
                 max={2099}

@@ -31,6 +31,7 @@ function Achievements({ cvdata, setCvData }) {
       <div className="section__form">
         <textarea
           className="input-field"
+          placeholder="Enter your achievements and certifications (one per line)"
           value={formdata.description}
           onChange={(e) => handleChange(e.target.value)}
           rows={5}

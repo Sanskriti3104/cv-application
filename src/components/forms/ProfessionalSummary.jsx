@@ -17,6 +17,7 @@ function ProfessionalSummary({ cvdata, setCvData }) {
         <textarea
           rows="5"
           className="input-field"
+          placeholder="Write a brief summary about yourself, your skills, and career goals"
           value={formdata}
           onChange={(e) =>
             setformdata(e.target.value)

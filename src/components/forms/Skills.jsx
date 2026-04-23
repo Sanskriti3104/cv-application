@@ -23,6 +23,7 @@ function Skills({ cvdata, setCvData }) {
           <input
             type="text"
             className="input-field"
+            placeholder="Enter category (e.g., Programming Languages, Tools)"
             value={skill.category}
             onChange={(e) =>
               handleChange(index, 'category', e.target.value)
@@ -33,6 +34,7 @@ function Skills({ cvdata, setCvData }) {
           <input
             type="text"
             className="input-field"
+            placeholder="e.g., JavaScript, React, Node.js"
             value={skill.skillItems}
             onChange={(e) =>
               handleChange(index, 'skillItems', e.target.value)

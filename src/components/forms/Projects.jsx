@@ -25,6 +25,7 @@ function Projects({ cvdata, setCvData }) {
           <input
             type="text"
             className="input-field"
+            placeholder="Enter project title"
             value={project.title}
             onChange={(e) =>
               handleChange(index, "title", e.target.value)
@@ -36,6 +37,7 @@ function Projects({ cvdata, setCvData }) {
             id="proj-description"
             rows={5}
             className="input-field"
+            placeholder="Describe the project, technologies used, and your role"
             value={project.description}
             onChange={(e) =>
               handleChange(index, "description", e.target.value)
@@ -47,6 +49,7 @@ function Projects({ cvdata, setCvData }) {
             type="url"
             id="proj-github"
             className="input-field"
+            placeholder="Enter GitHub repository URL"
             value={project.github}
             onChange={(e) =>
               handleChange(index, "github", e.target.value)
@@ -58,6 +61,7 @@ function Projects({ cvdata, setCvData }) {
             type="url"
             id="proj-live"
             className="input-field"
+            placeholder="Enter live project URL (if available)"
             value={project.live}
             onChange={(e) =>
               handleChange(index, "live", e.target.value)

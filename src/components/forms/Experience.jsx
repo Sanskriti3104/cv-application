@@ -26,6 +26,7 @@ function Experience({ cvdata, setCvData }) {
           <input
             type="text"
             className="input-field"
+            placeholder="Enter company name"
             value={exp.company}
             onChange={(e) =>
               handleChange(index, "company", e.target.value)
@@ -37,6 +38,7 @@ function Experience({ cvdata, setCvData }) {
             type="text"
             id="exp-role"
             className="input-field"
+            placeholder="Enter your role (e.g., Software Intern)"
             value={exp.role}
             onChange={(e) =>
               handleChange(index, "role", e.target.value)
@@ -50,6 +52,7 @@ function Experience({ cvdata, setCvData }) {
                 type="number"
                 id="exp-start"
                 className="input-field"
+                placeholder="e.g., 2023"
                 value={exp.start}
                 min={1900}
                 max={2099}
@@ -65,6 +68,7 @@ function Experience({ cvdata, setCvData }) {
                 type="number"
                 id="exp-end"
                 className="input-field"
+                placeholder="e.g., 2024"
                 value={exp.end}
                 min={1900}
                 max={2099}
@@ -80,6 +84,7 @@ function Experience({ cvdata, setCvData }) {
             id="exp-description"
             rows={5}
             className="input-field"
+            placeholder="Describe your responsibilities and achievements (use bullet points or short sentences)"
             value={exp.description}
             onChange={(e) =>
               handleChange(index, "description", e.target.value) 

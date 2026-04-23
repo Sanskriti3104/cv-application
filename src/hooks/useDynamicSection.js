@@ -1,39 +1,27 @@
 import { useCallback } from "react";
 
-function useDynamicSection(cvdata, setCvData, sectionName, emptyObject) {
-    const handleChange = useCallback((index, field, value) => {
-        const updatedSection = [...cvdata[sectionName]];
-        updatedSection[index][field] = value;
+function useDynamicSection(data, setdata, emptyObject) {
+  const handleChange = useCallback((index, field, value) => {
+    const updated = [...data];
+    updated[index][field] = value;
 
-        setCvData({
-            ...cvdata,
-            [sectionName]: updatedSection,
-        });
-    }, [cvdata, setCvData, sectionName]);
+    setdata(updated);
+  }, [data, setdata]);
 
-    const handleAdd = useCallback(() => {
-        setCvData({
-            ...cvdata,
-            [sectionName]: [
-                ...cvdata[sectionName],
-                emptyObject,
-            ],
-        });
-    }, [cvdata, setCvData, sectionName, emptyObject]);
+  const handleAdd = useCallback(() => {
+    setdata([...data, { ...emptyObject }]);
+  }, [data, setdata, emptyObject]);
 
-    const handleDelete = useCallback((index) => {
-        if (cvdata[sectionName].length === 1) return;
+  const handleDelete = useCallback((index) => {
+    if (data.length === 1) return;
 
-        const updatedSection = cvdata[sectionName].filter(
-            (_, i) => i !== index
-        );
-        setCvData({
-            ...cvdata,
-            [sectionName]: updatedSection,
-        });
-    }, [cvdata, setCvData, sectionName]);
+    const updated = data.filter(
+      (_, i) => i !== index
+    );
+    setdata(updated);
+  }, [data, setdata]);
 
-    return { handleChange, handleAdd, handleDelete };
+  return { handleChange, handleAdd, handleDelete };
 }
 
 export default useDynamicSection;

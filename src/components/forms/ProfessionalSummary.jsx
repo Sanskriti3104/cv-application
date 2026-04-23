@@ -1,20 +1,25 @@
+import { useState } from "react";
+
 function ProfessionalSummary({ cvdata, setCvData }) {
+  const [formdata, setformdata] = useState(cvdata.professionalSummary);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCvData({ ...cvdata, professionalSummary: formdata });
+  };
+  
   return (
-    <form className="section summary" id="summary-section">
+    <form onSubmit={handleSubmit} className="section summary" id="summary-section">
       <h1 className="section__title">Professional Summary</h1>
 
       <div className="section__form">
-        <label htmlFor="summary-text">Summary</label>
+        <label>Summary</label>
         <textarea
-          id="summary-text"
           rows="5"
           className="input-field"
-          value={cvdata.professionalSummary}
+          value={formdata}
           onChange={(e) =>
-            setCvData({
-              ...cvdata,
-              professionalSummary: e.target.value,
-            })
+            setformdata(e.target.value)
           }
         ></textarea>
       </div>

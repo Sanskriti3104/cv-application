@@ -1,7 +1,9 @@
+import { useState } from "react";
 import useDynamicSection from "../../hooks/useDynamicSection";
 
 function Experience({ cvdata, setCvData }) {
-  const { handleChange, handleAdd, handleDelete } = useDynamicSection(cvdata, setCvData, "experience", {
+  const [formdata,setformdata] = useState(cvdata.experience);
+  const { handleChange, handleAdd, handleDelete } = useDynamicSection(formdata, setformdata, {
     company: "",
     role: "",
     start: "",
@@ -9,16 +11,20 @@ function Experience({ cvdata, setCvData }) {
     description: "",
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCvData({...cvdata, experience: formdata});
+  }
+
   return (
-    <form className="section experience" id="experience-section">
+    <form onSubmit={handleSubmit} className="section experience" id="experience-section">
       <h1 className="section__title">Experience</h1>
 
-      {cvdata.experience.map((exp, index) => (
+      {formdata.map((exp, index) => (
         <div className="section__form" key={index}>
-          <label htmlFor="exp-company">Company</label>
+          <label>Company</label>
           <input
             type="text"
-            id="exp-company"
             className="input-field"
             value={exp.company}
             onChange={(e) =>
@@ -83,7 +89,7 @@ function Experience({ cvdata, setCvData }) {
               type="button"
               className="btn btn--danger"
               onClick={() => handleDelete(index)}
-              disabled={cvdata.experience.length === 1}
+              disabled={formdata.length === 1}
             >
               Delete
             </button>

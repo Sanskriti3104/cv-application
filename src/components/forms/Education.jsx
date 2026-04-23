@@ -1,19 +1,28 @@
 import useDynamicSection from "../../hooks/useDynamicSection";
+import { useState } from "react";
 
 function Education({ cvdata, setCvData }) {
-  const { handleChange, handleAdd, handleDelete } = useDynamicSection(cvdata, setCvData, "education", {
-    institute: "",
-    degree: "",
-    marks: "",
-    start: "",
-    end: "",
-  });
+  const [formdata, setformdata] = useState(cvdata.education);
+
+  const { handleChange, handleAdd, handleDelete } =
+    useDynamicSection(formdata, setformdata, {
+      institute: "",
+      degree: "",
+      marks: "",
+      start: "",
+      end: "",
+    });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCvData({ ...cvdata, education: formdata });
+  };
 
   return (
-    <form className="section education" id="education-section">
+    <form onSubmit={handleSubmit} className="section education" id="education-section">
       <h1 className="section__title">Education</h1>
 
-      {cvdata.education.map((edu, index) => (
+      {formdata.map((edu, index) => (
         <div className="section__form" key={index}>
           <label>Institute</label>
           <input
@@ -74,11 +83,12 @@ function Education({ cvdata, setCvData }) {
               />
             </div>
           </div>
+
           <button
             type="button"
             className="btn btn--danger"
             onClick={() => handleDelete(index)}
-            disabled={cvdata.education.length === 1}
+            disabled={formdata.length === 1}
           >
             Delete
           </button>
@@ -93,6 +103,7 @@ function Education({ cvdata, setCvData }) {
         >
           Add
         </button>
+
         <button type="submit" className="btn btn--primary">
           Submit
         </button>

@@ -1,23 +1,29 @@
+import { useState } from "react";
 import useDynamicSection from "../../hooks/useDynamicSection";
 
 function Projects({ cvdata, setCvData }) {
-  const { handleChange, handleAdd, handleDelete } = useDynamicSection(cvdata, setCvData, "projects", {
+  const [formdata,setformdata] = useState(cvdata.projects);
+  const { handleChange, handleAdd, handleDelete } = useDynamicSection(formdata, setformdata, {
     title: "",
     description: "",
     github: "",
     live: "",
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCvData({...cvdata, projects: formdata});
+  }
+
   return (
-    <form className="section projects" id="projects-section">
+    <form onSubmit={handleSubmit} className="section projects" id="projects-section">
       <h1 className="section__title">Projects</h1>
 
-      {cvdata.projects.map((project, index) => (
+      {formdata.map((project, index) => (
         <div className="section__form" key={index}>
-          <label htmlFor="proj-title">Project Title</label>
+          <label>Project Title</label>
           <input
             type="text"
-            id="proj-title"
             className="input-field"
             value={project.title}
             onChange={(e) =>
@@ -62,7 +68,7 @@ function Projects({ cvdata, setCvData }) {
             type="button"
             className="btn btn--danger"
             onClick={() => handleDelete(index)}
-            disabled={cvdata.projects.length === 1}
+            disabled={formdata.length === 1}
           >
             Delete
           </button>

@@ -16,6 +16,10 @@
   overflow-y: auto;
 }
 
+.form-container h1{
+  margin-bottom: 10px;
+}
+
 .preview-container {
   width: 60%;
   padding: 20px;
@@ -65,6 +69,8 @@ label {
 
 .input-field {
   padding: 10px;
+  margin: 10px;
+  /* width: 100%; */
   border: 1px solid #cbd5f5;
   border-radius: 6px;
   font-size: 14px;
@@ -101,14 +107,21 @@ label {
 /* PREVIEW RESUME */
 
 .preview {
-  width: 794px;
-  min-height: 1123px;
+  width: 794px;              
+  min-height: 1123px;        
   margin: 0 auto;
   background: white;
-  padding: 50px;
+  padding: 40px;
   color: black;
   font-family: 'Times New Roman', Times, serif;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.preview-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 /* HEADER */
@@ -200,4 +213,54 @@ a{
   padding: 6px 10px;
   border-radius: 5px;
   font-size: 13px;
+}
+
+@media print {
+
+  @page {
+    size: A4;
+    margin: 5mm;
+  }
+
+  body {
+    margin: 0;
+    background: white;
+  }
+
+  /* Hide everything except resume */
+  body * {
+    visibility: hidden;
+  }
+
+  #cv-preview, #cv-preview * {
+    visibility: visible;
+  }
+
+  #cv-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  /* Prevent awkward breaks */
+  .preview__section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .preview__item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Lists should not split weirdly */
+  .preview__list {
+    page-break-inside: avoid;
+  }
+
+  /* Remove shadows for clean PDF */
+  .preview {
+    box-shadow: none;
+  }
 }

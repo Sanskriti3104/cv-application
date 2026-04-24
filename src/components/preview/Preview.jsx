@@ -7,13 +7,21 @@ import ProjectsPreview from "./ProjectsPreview";
 import AchievementsPreview from "./AchievementsPreview";
 
 function Preview({ cvdata }) {
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
     <div className="preview-container">
-      <h1 style={{ marginBottom: "10px", color: "#334155" }}>
-        Resume Preview
-      </h1>
+      
+      <div className="preview-topbar">
+        <h1 className="preview-heading">Resume Preview</h1>
+        <button onClick={handlePrint} className="btn btn--primary">
+          Export as PDF
+        </button>
+      </div>
 
-      <div className="preview">
+      <div id="cv-preview" className="preview">
         <PersonalPreview cvdata={cvdata} />
         <ProfessionalPreview cvdata={cvdata} />
         <EducationPreview cvdata={cvdata} />

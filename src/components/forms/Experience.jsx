@@ -52,7 +52,7 @@ function Experience({ cvdata, setCvData }) {
                 type="number"
                 id="exp-start"
                 className="input-field"
-                placeholder="e.g., 2023"
+                placeholder="e.g.,2023"
                 value={exp.start}
                 min={1900}
                 max={2099}
@@ -68,7 +68,7 @@ function Experience({ cvdata, setCvData }) {
                 type="number"
                 id="exp-end"
                 className="input-field"
-                placeholder="e.g., 2024"
+                placeholder="e.g.,2024"
                 value={exp.end}
                 min={1900}
                 max={2099}

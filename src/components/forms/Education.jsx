@@ -63,7 +63,7 @@ function Education({ cvdata, setCvData }) {
               <input
                 type="number"
                 className="input-field"
-                placeholder="e.g., 2021"
+                placeholder="e.g.,2021"
                 value={edu.start}
                 min={1900}
                 max={2099}
@@ -78,7 +78,7 @@ function Education({ cvdata, setCvData }) {
               <input
                 type="number"
                 className="input-field"
-                placeholder="e.g., 2025"
+                placeholder="e.g.,2025"
                 value={edu.end}
                 min={1900}
                 max={2099}

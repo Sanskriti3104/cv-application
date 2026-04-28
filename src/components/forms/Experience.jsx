@@ -21,7 +21,10 @@ function Experience({ cvdata, setCvData }) {
   const { toggleSection } = useSectionVisibility(setCvData, "experience");;
 
   return (
-    <form onSubmit={handleSubmit} className="section experience" id="experience-section">
+    <form
+      onSubmit={handleSubmit}
+      className={`section experience ${!cvdata.experience.visible ? "section--hidden" : ""}`}
+      id="experience-section">
       <div className="section__header">
         <h1 className="section__title">Experience</h1>
         <button
@@ -29,7 +32,7 @@ function Experience({ cvdata, setCvData }) {
           className="btn btn--icon"
           onClick={toggleSection}
         >
-          {cvdata.experience.visible ? <FaEyeSlash/> : <FaEye />}
+          {cvdata.experience.visible ? <FaEyeSlash /> : <FaEye />}
         </button>
       </div>
 
@@ -123,7 +126,7 @@ function Experience({ cvdata, setCvData }) {
           Add
         </button>
         <button type="submit" className="btn btn--primary">
-          Submit
+          Save
         </button>
       </div>
     </form>

@@ -24,7 +24,7 @@ function Achievements({ cvdata, setCvData }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="section achievements"
+      className={`section achievements ${!cvdata.achievements.visible ? "section--hidden" : ""}`}
       id="achievements-section"
     >
       <div className="section__header">
@@ -50,7 +50,7 @@ function Achievements({ cvdata, setCvData }) {
 
       <div className="section__actions">
         <button type="submit" className="btn btn--primary">
-          Submit
+          Save
         </button>
       </div>
     </form>

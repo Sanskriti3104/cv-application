@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function ProfessionalSummary({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.professionalSummary.text);
-  const { toggleSection } = useSectionVisibility(setCvData,"professionalSummary");
+  const { toggleSection } = useSectionVisibility(setCvData, "professionalSummary");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +18,9 @@ function ProfessionalSummary({ cvdata, setCvData }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="section summary" id="summary-section">
+    <form onSubmit={handleSubmit}
+      className={`section professionalSummary ${!cvdata.professionalSummary.visible ? "section--hidden" : ""}`}
+      id="summary-section">
 
       <div className="section__header">
         <h1 className="section__title">Professional Summary</h1>
@@ -46,7 +48,7 @@ function ProfessionalSummary({ cvdata, setCvData }) {
 
       <div className="section__actions">
         <button type="submit" className="btn btn--primary">
-          Submit
+          Save
         </button>
       </div>
     </form>

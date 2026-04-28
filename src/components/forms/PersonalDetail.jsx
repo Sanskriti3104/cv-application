@@ -38,7 +38,7 @@ function PersonalDetail({ cvdata, setCvData }) {
       </div>
 
       <div className="section__actions">
-        <button type="submit" className="btn btn--primary">Submit</button>
+        <button type="submit" className="btn btn--primary">Save</button>
       </div>
     </form>
   );

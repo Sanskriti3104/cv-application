@@ -22,7 +22,10 @@ function Education({ cvdata, setCvData }) {
   const { toggleSection } = useSectionVisibility(setCvData, "education");;
 
   return (
-    <form onSubmit={handleSubmit} className="section education" id="education-section">
+    <form
+      onSubmit={handleSubmit}
+      className={`section education ${!cvdata.education.visible ? "section--hidden" : ""}`}
+      id="education-section">
       <div className="section__header">
         <h1 className="section__title">Education</h1>
         <button
@@ -58,7 +61,7 @@ function Education({ cvdata, setCvData }) {
             }
           />
 
-          <label>C.G.P.A.</label> 
+          <label>C.G.P.A.</label>
           <input
             type="text"
             className="input-field"
@@ -122,7 +125,7 @@ function Education({ cvdata, setCvData }) {
         </button>
 
         <button type="submit" className="btn btn--primary">
-          Submit
+          Save
         </button>
       </div>
     </form>

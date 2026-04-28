@@ -20,7 +20,10 @@ function Projects({ cvdata, setCvData }) {
   const { toggleSection } = useSectionVisibility(setCvData, "projects");;
 
   return (
-    <form onSubmit={handleSubmit} className="section projects" id="projects-section">
+    <form
+      onSubmit={handleSubmit}
+      className={`section projects ${!cvdata.projects.visible ? "section--hidden" : ""}`}
+      id="projects-section">
       <div className="section__header">
         <h1 className="section__title">Projects</h1>
         <button
@@ -101,7 +104,7 @@ function Projects({ cvdata, setCvData }) {
           Add Project
         </button>
         <button type="submit" className="btn btn--primary">
-          Submit
+          Save
         </button>
       </div>
     </form>

@@ -20,34 +20,51 @@ function App() {
       linkedin: "",
       github: ""
     },
-    professionalSummary: "",
-    education: [{
-      institute: "",
-      degree: "",
-      marks: "",
-      start: "",
-      end: "",
+    professionalSummary: {
+      visible: true,
+      text: ""
     },
-    ],
-    experience: [{
-      company: "",
-      role: "",
-      start: "",
-      end: "",
-      description: "",
-    }],
-    skills: [{
-      category: "",
-      skillItems: "",
-    }],
-    projects: [{
-      title: "",
-      description: "",
-      github: "",
-      live: "",
-    }],
+    education: {
+      visible: true,
+      items: [{
+        institution: "",
+        degree: "",
+        start: "",
+        end: "",
+        description: "",
+      }]
+    },
+    experience: {
+      visible: true,
+      items: [{
+        company: "",
+        role: "",
+        start: "",
+        end: "",
+        description: "",
+      }]
+    },
+    skills: {
+      visible: true,
+      items: [{
+        category: "",
+        skillItems: "",
+      }],
+    },
+    projects: {
+      visible: true,
+      items: [{
+        title: "",
+        description: "",
+        github: "",
+        live: "",
+      }],
+    },
     achievements: {
-      description: "",
+      visible: true,
+      items: [{
+        description: "",
+      }],
     },
   });
 

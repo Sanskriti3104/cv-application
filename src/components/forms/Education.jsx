@@ -1,9 +1,9 @@
 import useDynamicSection from "../../hooks/useDynamicSection";
+import useSectionVisibility from "../../hooks/useSectionVisibility";
 import { useState } from "react";
 
 function Education({ cvdata, setCvData }) {
-  const [formdata, setformdata] = useState(cvdata.education);
-
+  const [formdata, setformdata] = useState(cvdata.education.items);
   const { handleChange, handleAdd, handleDelete } =
     useDynamicSection(formdata, setformdata, {
       institute: "",
@@ -15,12 +15,23 @@ function Education({ cvdata, setCvData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCvData({ ...cvdata, education: formdata });
+    setCvData({ ...cvdata, education: { ...cvdata.education, items: formdata } });
   };
+
+  const { toggleSection } = useSectionVisibility(setCvData, "education");;
 
   return (
     <form onSubmit={handleSubmit} className="section education" id="education-section">
-      <h1 className="section__title">Education</h1>
+      <div className="section__header">
+        <h1 className="section__title">Education</h1>
+        <button
+          type="button"
+          className="btn btn--secondary"
+          onClick={toggleSection}
+        >
+          {cvdata.education.visible ? "👁 Hide" : "👁 Show"}
+        </button>
+      </div>
 
       {formdata.map((edu, index) => (
         <div className="section__form" key={index}>

@@ -1,11 +1,12 @@
 function ProjectsPreview({ cvdata }) {
-  if (!cvdata.projects.length) return null;
+  if (!cvdata.projects.visible) return null;
+  if (!cvdata.projects.items.length) return null;
 
   return (
     <div className="preview__section">
       <div className="preview__title">Projects</div>
 
-      {cvdata.projects.map((project, index) => (
+      {cvdata.projects.items.map((project, index) => (
         <div key={index} className="preview__item">
           <div className="preview__bold">{project.title}</div>
 

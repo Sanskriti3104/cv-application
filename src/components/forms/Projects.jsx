@@ -1,8 +1,9 @@
 import { useState } from "react";
 import useDynamicSection from "../../hooks/useDynamicSection";
+import useSectionVisibility from "../../hooks/useSectionVisibility";
 
 function Projects({ cvdata, setCvData }) {
-  const [formdata,setformdata] = useState(cvdata.projects);
+  const [formdata, setformdata] = useState(cvdata.projects.items);
   const { handleChange, handleAdd, handleDelete } = useDynamicSection(formdata, setformdata, {
     title: "",
     description: "",
@@ -12,12 +13,23 @@ function Projects({ cvdata, setCvData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCvData({...cvdata, projects: formdata});
+    setCvData({ ...cvdata, projects: { ...cvdata.projects, items: formdata } });
   }
+
+  const { toggleSection } = useSectionVisibility(setCvData, "projects");;
 
   return (
     <form onSubmit={handleSubmit} className="section projects" id="projects-section">
-      <h1 className="section__title">Projects</h1>
+      <div className="section__header">
+        <h1 className="section__title">Projects</h1>
+        <button
+          type="button"
+          className="btn btn--secondary"
+          onClick={toggleSection}
+        >
+          {cvdata.projects.visible ? "👁 Hide" : "👁 Show"}
+        </button>
+      </div>
 
       {formdata.map((project, index) => (
         <div className="section__form" key={index}>

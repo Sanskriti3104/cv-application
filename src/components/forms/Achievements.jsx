@@ -1,7 +1,9 @@
 import { useState } from "react";
+import useSectionVisibility from "../../hooks/useSectionVisibility";
 
 function Achievements({ cvdata, setCvData }) {
-  const [formdata, setformdata] = useState(cvdata.achievements);
+  const [formdata, setformdata] = useState(cvdata.achievements.items[0]);
+  const { toggleSection } = useSectionVisibility(setCvData, "achievements");;
 
   const handleChange = (value) => {
     setformdata({
@@ -14,7 +16,7 @@ function Achievements({ cvdata, setCvData }) {
     e.preventDefault();
     setCvData({
       ...cvdata,
-      achievements: formdata,
+      achievements: { ...cvdata.achievements, items: [formdata] },
     });
   };
 
@@ -24,9 +26,16 @@ function Achievements({ cvdata, setCvData }) {
       className="section achievements"
       id="achievements-section"
     >
-      <h1 className="section__title">
-        Achievements & Certifications
-      </h1>
+      <div className="section__header">
+        <h1 className="section__title">Achievements & Certifications</h1>
+        <button
+          type="button"
+          className="btn btn--secondary"
+          onClick={toggleSection}
+        >
+          {cvdata.achievements.visible ? "👁 Hide" : "👁 Show"}
+        </button>
+      </div>
 
       <div className="section__form">
         <textarea

@@ -1,16 +1,34 @@
 import { useState } from "react";
+import useSectionVisibility from "../../hooks/useSectionVisibility";
 
 function ProfessionalSummary({ cvdata, setCvData }) {
-  const [formdata, setformdata] = useState(cvdata.professionalSummary);
+  const [formdata, setformdata] = useState(cvdata.professionalSummary.text);
+  const { toggleSection } = useSectionVisibility(setCvData,"professionalSummary");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCvData({ ...cvdata, professionalSummary: formdata });
+    setCvData({
+      ...cvdata,
+      professionalSummary: {
+        ...cvdata.professionalSummary,
+        text: formdata,
+      },
+    });
   };
-  
+
   return (
     <form onSubmit={handleSubmit} className="section summary" id="summary-section">
-      <h1 className="section__title">Professional Summary</h1>
+
+      <div className="section__header">
+        <h1 className="section__title">Professional Summary</h1>
+        <button
+          type="button"
+          className="btn btn--secondary"
+          onClick={toggleSection}
+        >
+          {cvdata.professionalSummary.visible ? "👁 Hide" : "👁 Show"}
+        </button>
+      </div>
 
       <div className="section__form">
         <label>Summary</label>

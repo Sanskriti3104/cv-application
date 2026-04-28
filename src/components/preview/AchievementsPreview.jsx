@@ -1,19 +1,26 @@
 function AchievementsPreview({ cvdata }) {
-    const points = cvdata.achievements.description
-        .split("\n")
-        .filter((line) => line.trim() !== "");
+  if (!cvdata.achievements.visible) return null;
 
-    return (
-        <div className="preview__section">
-            <div className="preview__title">Achievements & Certifications</div>
+  const description =
+    cvdata.achievements.items[0]?.description || "";
 
-            {points.map((point, i) => (
-                <div key={i} className="preview__item">
-                    • {point}
-                </div>
-            ))}
+  const points = description
+    .split("\n")
+    .filter((line) => line.trim() !== "");
+
+  return (
+    <div className="preview__section">
+      <div className="preview__title">
+        Achievements & Certifications
+      </div>
+
+      {points.map((point, i) => (
+        <div key={i} className="preview__item">
+          • {point}
         </div>
-    );
+      ))}
+    </div>
+  );
 }
 
 export default AchievementsPreview;

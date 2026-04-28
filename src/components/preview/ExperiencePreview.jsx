@@ -1,11 +1,12 @@
 function ExperiencePreview({ cvdata }) {
-  if (!cvdata.experience.length) return null;
+  if (!cvdata.experience.visible) return null;
+  if (!cvdata.experience.items.length) return null;
 
   return (
     <div className="preview__section">
       <div className="preview__title">Experience</div>
 
-      {cvdata.experience.map((exp, index) => {
+      {cvdata.experience.items.map((exp, index) => {
         const hasRole = exp.role;
         const hasStart = exp.start;
         const hasEnd = exp.end;

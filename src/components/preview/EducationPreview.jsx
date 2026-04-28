@@ -1,11 +1,12 @@
 function EducationPreview({ cvdata }) {
-  if (!cvdata.education.length) return null;
+  if (!cvdata.education.visible) return null;
+  if (!cvdata.education.items.length) return null;
 
   return (
     <div className="preview__section">
       <div className="preview__title">Education</div>
 
-      {cvdata.education.map((edu, index) => {
+      {cvdata.education.items.map((edu, index) => {
         const hasMarks = edu.marks;
         const hasStart = edu.start;
         const hasEnd = edu.end;

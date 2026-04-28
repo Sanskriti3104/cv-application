@@ -1,8 +1,9 @@
 import { useState } from "react";
 import useDynamicSection from "../../hooks/useDynamicSection";
+import useSectionVisibility from "../../hooks/useSectionVisibility";
 
 function Experience({ cvdata, setCvData }) {
-  const [formdata,setformdata] = useState(cvdata.experience);
+  const [formdata, setformdata] = useState(cvdata.experience.items);
   const { handleChange, handleAdd, handleDelete } = useDynamicSection(formdata, setformdata, {
     company: "",
     role: "",
@@ -13,12 +14,23 @@ function Experience({ cvdata, setCvData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCvData({...cvdata, experience: formdata});
+    setCvData({ ...cvdata, experience: { ...cvdata.experience, items: formdata } });
   }
+
+  const { toggleSection } = useSectionVisibility(setCvData, "experience");;
 
   return (
     <form onSubmit={handleSubmit} className="section experience" id="experience-section">
-      <h1 className="section__title">Experience</h1>
+      <div className="section__header">
+        <h1 className="section__title">Experience</h1>
+        <button
+          type="button"
+          className="btn btn--secondary"
+          onClick={toggleSection}
+        >
+          {cvdata.experience.visible ? "👁 Hide" : "👁 Show"}
+        </button>
+      </div>
 
       {formdata.map((exp, index) => (
         <div className="section__form" key={index}>
@@ -87,17 +99,17 @@ function Experience({ cvdata, setCvData }) {
             placeholder="Describe your responsibilities and achievements (use bullet points or short sentences)"
             value={exp.description}
             onChange={(e) =>
-              handleChange(index, "description", e.target.value) 
+              handleChange(index, "description", e.target.value)
             }
           ></textarea>
           <button
-              type="button"
-              className="btn btn--danger"
-              onClick={() => handleDelete(index)}
-              disabled={formdata.length === 1}
-            >
-              Delete
-            </button>
+            type="button"
+            className="btn btn--danger"
+            onClick={() => handleDelete(index)}
+            disabled={formdata.length === 1}
+          >
+            Delete
+          </button>
         </div>
       ))}
 

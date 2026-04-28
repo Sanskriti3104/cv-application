@@ -160,9 +160,6 @@ a{
 }
 
 /* EDUCATION / EXPERIENCE / PROJECT */
-.preview__item {
-  margin-bottom: 12px;
-}
 
 .preview__bold {
   font-weight: bold;
@@ -171,48 +168,6 @@ a{
 
 .preview__text {
   font-size: 16px;
-}
-
-
-/* BULLETS */
-.preview__list {
-  padding-left: 20px;
-}
-
-.preview__list li {
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-
-.preview__item-header {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 500;
-}
-
-.preview__sub {
-  font-size: 14px;
-  color: #0f172a;
-}
-
-.preview__desc {
-  font-size: 16px;
-  margin-top: 5px;
-  line-height: 1.5;
-}
-
-/* SKILLS */
-.preview__skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.preview__skill {
-  background: #e2e8f0;
-  padding: 6px 10px;
-  border-radius: 5px;
-  font-size: 13px;
 }
 
 @media print {
@@ -227,7 +182,6 @@ a{
     background: white;
   }
 
-  /* Hide everything except resume */
   body * {
     visibility: hidden;
   }
@@ -243,10 +197,9 @@ a{
     width: 100%;
   }
 
-  /* Prevent awkward breaks */
   .preview__section {
-    page-break-inside: avoid;
-    break-inside: avoid;
+    break-inside: auto;
+    page-break-inside: auto;
   }
 
   .preview__item {
@@ -254,12 +207,6 @@ a{
     break-inside: avoid;
   }
 
-  /* Lists should not split weirdly */
-  .preview__list {
-    page-break-inside: avoid;
-  }
-
-  /* Remove shadows for clean PDF */
   .preview {
     box-shadow: none;
   }

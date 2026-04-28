@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useDynamicSection from "../../hooks/useDynamicSection";
 import useSectionVisibility from "../../hooks/useSectionVisibility";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Projects({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.projects.items);
@@ -24,10 +25,10 @@ function Projects({ cvdata, setCvData }) {
         <h1 className="section__title">Projects</h1>
         <button
           type="button"
-          className="btn btn--secondary"
+          className="btn btn--icon"
           onClick={toggleSection}
         >
-          {cvdata.projects.visible ? "👁 Hide" : "👁 Show"}
+          {cvdata.projects.visible ? <FaEyeSlash /> : <FaEye />}
         </button>
       </div>
 

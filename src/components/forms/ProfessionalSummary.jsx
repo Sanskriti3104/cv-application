@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useSectionVisibility from "../../hooks/useSectionVisibility";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function ProfessionalSummary({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.professionalSummary.text);
@@ -23,10 +24,10 @@ function ProfessionalSummary({ cvdata, setCvData }) {
         <h1 className="section__title">Professional Summary</h1>
         <button
           type="button"
-          className="btn btn--secondary"
+          className="btn btn--icon"
           onClick={toggleSection}
         >
-          {cvdata.professionalSummary.visible ? "👁 Hide" : "👁 Show"}
+          {cvdata.professionalSummary.visible ? <FaEyeSlash /> : <FaEye />}
         </button>
       </div>
 

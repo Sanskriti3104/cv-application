@@ -1,6 +1,7 @@
 import useDynamicSection from "../../hooks/useDynamicSection";
 import useSectionVisibility from "../../hooks/useSectionVisibility";
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Education({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.education.items);
@@ -26,10 +27,10 @@ function Education({ cvdata, setCvData }) {
         <h1 className="section__title">Education</h1>
         <button
           type="button"
-          className="btn btn--secondary"
+          className="btn btn--icon"
           onClick={toggleSection}
         >
-          {cvdata.education.visible ? "👁 Hide" : "👁 Show"}
+          {cvdata.education.visible ? <FaEyeSlash /> : <FaEye />}
         </button>
       </div>
 

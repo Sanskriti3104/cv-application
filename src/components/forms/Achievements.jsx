@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useSectionVisibility from "../../hooks/useSectionVisibility";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Achievements({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.achievements.items[0]);
@@ -30,10 +31,10 @@ function Achievements({ cvdata, setCvData }) {
         <h1 className="section__title">Achievements & Certifications</h1>
         <button
           type="button"
-          className="btn btn--secondary"
+          className="btn btn--icon"
           onClick={toggleSection}
         >
-          {cvdata.achievements.visible ? "👁 Hide" : "👁 Show"}
+          {cvdata.achievements.visible ? <FaEyeSlash /> : <FaEye />}
         </button>
       </div>
 

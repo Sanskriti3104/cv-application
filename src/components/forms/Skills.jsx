@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useDynamicSection from "../../hooks/useDynamicSection";
 import useSectionVisibility from "../../hooks/useSectionVisibility";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Skills({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.skills.items);
@@ -22,10 +23,10 @@ function Skills({ cvdata, setCvData }) {
         <h1 className="section__title">Skills</h1>
         <button
           type="button"
-          className="btn btn--secondary"
+          className="btn btn--icon"
           onClick={toggleSection}
         >
-          {cvdata.skills.visible ? "👁 Hide" : "👁 Show"}
+          {cvdata.skills.visible ? <FaEyeSlash /> : <FaEye />}
         </button>
       </div>
 

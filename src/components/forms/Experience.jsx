@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useDynamicSection from "../../hooks/useDynamicSection";
 import useSectionVisibility from "../../hooks/useSectionVisibility";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Experience({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.experience.items);
@@ -25,10 +26,10 @@ function Experience({ cvdata, setCvData }) {
         <h1 className="section__title">Experience</h1>
         <button
           type="button"
-          className="btn btn--secondary"
+          className="btn btn--icon"
           onClick={toggleSection}
         >
-          {cvdata.experience.visible ? "👁 Hide" : "👁 Show"}
+          {cvdata.experience.visible ? <FaEyeSlash/> : <FaEye />}
         </button>
       </div>
 

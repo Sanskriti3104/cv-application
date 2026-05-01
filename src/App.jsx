@@ -27,8 +27,9 @@ function App() {
     education: {
       visible: true,
       items: [{
-        institution: "",
+        institute: "",
         degree: "",
+        marks: "",
         start: "",
         end: "",
         description: "",

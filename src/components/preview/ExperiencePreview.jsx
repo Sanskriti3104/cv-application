@@ -21,9 +21,8 @@ function ExperiencePreview({ cvdata }) {
 
                 {hasRole && (hasStart || hasEnd) && " | "}
 
-                {(hasStart || hasEnd) &&
-                  `${hasStart || ""}${hasStart && hasEnd ? " - " : ""
-                  }${hasEnd || ""}`}
+                { hasStart &&
+                  `${hasStart}${hasEnd ? " - " + hasEnd : " -"}`}
               </div>
             )}
 

@@ -4,7 +4,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Achievements({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.achievements.items[0]);
-  const { toggleSection } = useSectionVisibility(setCvData, "achievements");;
+  const [error, setError] = useState("");
+
+  const { toggleSection } = useSectionVisibility(setCvData, "achievements");
 
   const handleChange = (value) => {
     setformdata({
@@ -13,8 +15,29 @@ function Achievements({ cvdata, setCvData }) {
     });
   };
 
+  const validate = () => {
+    if (!formdata.description.trim()) {
+      setError("At least one achievement is required");
+      return false;
+    }
+
+    const lines = formdata.description
+      .split("\n")
+      .map((l) => l.trim())
+      .filter((l) => l !== "");
+
+    if (lines.length === 0) {
+      setError("Enter valid achievements");
+      return false;
+    }
+
+    setError("");
+    return true;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validate()) return;
     setCvData({
       ...cvdata,
       achievements: { ...cvdata.achievements, items: [formdata] },
@@ -24,7 +47,9 @@ function Achievements({ cvdata, setCvData }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`section achievements ${!cvdata.achievements.visible ? "section--hidden" : ""}`}
+      className={`section achievements ${
+        !cvdata.achievements.visible ? "section--hidden" : ""
+      }`}
       id="achievements-section"
     >
       <div className="section__header">
@@ -40,12 +65,13 @@ function Achievements({ cvdata, setCvData }) {
 
       <div className="section__form">
         <textarea
-          className="input-field"
+          className={`input-field ${error ? "error-border" : ""}`}
           placeholder="Enter your achievements and certifications (one per line)"
           value={formdata.description}
           onChange={(e) => handleChange(e.target.value)}
           rows={5}
         />
+        {error && <p className="error">{error}</p>}
       </div>
 
       <div className="section__actions">

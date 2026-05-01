@@ -258,3 +258,63 @@ a{
     box-shadow: none;
   }
 }
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .form-container,
+  .preview-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .preview {
+    width: 100%;
+    min-height: auto;
+    transform: scale(1);
+    padding: 20px;
+  }
+
+  .section__row {
+    flex-direction: column;
+  }
+
+  .preview__name {
+    font-size: 26px;
+  }
+
+  .section__title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .preview {
+    padding: 15px;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  .input-field {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .btn {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .preview__name {
+    font-size: 22px;
+  }
+
+  .preview__contact {
+    font-size: 14px;
+  }
+}

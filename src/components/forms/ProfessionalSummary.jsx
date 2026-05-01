@@ -8,7 +8,7 @@ function ProfessionalSummary({ cvdata, setCvData }) {
 
   useEffect(() => {
     setformdata(cvdata.professionalSummary.text);
-  }, [cvdata.professionalSummary]);
+  }, []);
   
   const { toggleSection } = useSectionVisibility(setCvData, "professionalSummary");
 

@@ -8,7 +8,8 @@ function ProjectsPreview({ cvdata }) {
 
       {cvdata.projects.items.map((project, index) => (
         <div key={index} className="preview__item">
-          <div className="preview__bold">{project.title}
+          <div className="preview__bold">
+            <span>{project.title}</span>
             <div className="preview__text">
               {project.github && (
                 <a href={project.github} target="_blank" rel="noreferrer">

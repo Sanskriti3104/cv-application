@@ -166,7 +166,7 @@ function Experience({ cvdata, setCvData }) {
           className="btn btn--secondary"
           onClick={handleAdd}
         >
-          Add
+          Add Experience
         </button>
 
         <button type="submit" className="btn btn--primary">

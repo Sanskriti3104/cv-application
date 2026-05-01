@@ -8,7 +8,7 @@ function Achievements({ cvdata, setCvData }) {
 
   useEffect(() => {
     setformdata(cvdata.achievements.items[0]);
-  }, [cvdata.achievements]);
+  }, []);
   
   const { toggleSection } = useSectionVisibility(setCvData, "achievements");
 

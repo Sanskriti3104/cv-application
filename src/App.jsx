@@ -11,66 +11,71 @@ import Achievements from "./components/forms/Achievements.jsx";
 import Preview from "./components/preview/Preview.jsx";
 
 function App() {
+  const defaultData = {
+    personal: {
+      name: "",
+      place: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: ""
+    },
+    professionalSummary: {
+      visible: true,
+      text: ""
+    },
+    education: {
+      visible: true,
+      items: [{
+        institute: "",
+        degree: "",
+        marks: "",
+        start: "",
+        end: "",
+      }]
+    },
+    experience: {
+      visible: true,
+      items: [{
+        company: "",
+        role: "",
+        start: "",
+        end: "",
+        description: "",
+      }]
+    },
+    projects: {
+      visible: true,
+      items: [{
+        title: "",
+        description: "",
+        github: "",
+        live: "",
+      }],
+    },
+    skills: {
+      visible: true,
+      items: [{
+        category: "",
+        skillItems: "",
+      }],
+    },
+    achievements: {
+      visible: true,
+      items: [{
+        description: "",
+      }],
+    },
+  };
+
   const [cvdata, setCvData] = useState(() => {
-    const savedData = localStorage.getItem("cvdata");
-    return savedData
-      ? JSON.parse(savedData)
-      : {
-          personal: {
-            name: "",
-            place: "",
-            email: "",
-            phone: "",
-            linkedin: "",
-            github: ""
-          },
-          professionalSummary: {
-            visible: true,
-            text: ""
-          },
-          education: {
-            visible: true,
-            items: [{
-              institute: "",
-              degree: "",
-              marks: "",
-              start: "",
-              end: "",
-            }]
-          },
-          experience: {
-            visible: true,
-            items: [{
-              company: "",
-              role: "",
-              start: "",
-              end: "",
-              description: "",
-            }]
-          },
-          projects: {
-            visible: true,
-            items: [{
-              title: "",
-              description: "",
-              github: "",
-              live: "",
-            }],
-          },
-          skills: {
-            visible: true,
-            items: [{
-              category: "",
-              skillItems: "",
-            }],
-          },
-          achievements: {
-            visible: true,
-            items: [{
-              description: "",
-            }],
-          },
-        };
+    try {
+      const savedData = localStorage.getItem("cvdata");
+      return savedData ? JSON.parse(savedData) : defaultData;
+    } catch {
+      localStorage.removeItem("cvdata"); // clear bad data
+      return defaultData;
+    }
   });
 
   useEffect(() => {

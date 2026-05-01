@@ -156,7 +156,7 @@ function Education({ cvdata, setCvData }) {
 
           <button
             type="button"
-            className="btn btn--danger"
+            className="btn"
             onClick={() => handleDelete(index)}
             disabled={formdata.length === 1}
           >

@@ -2,8 +2,8 @@ import PersonalPreview from "./PersonalPreview";
 import ProfessionalPreview from "./ProfessionalPreview";
 import EducationPreview from "./EducationPreview";
 import ExperiencePreview from "./ExperiencePreview";
-import SkillsPreview from "./SkillsPreview";
 import ProjectsPreview from "./ProjectsPreview";
+import SkillsPreview from "./SkillsPreview";
 import AchievementsPreview from "./AchievementsPreview";
 
 function Preview({ cvdata }) {
@@ -13,7 +13,7 @@ function Preview({ cvdata }) {
 
   return (
     <div className="preview-container">
-      
+
       <div className="preview-topbar">
         <h1 className="preview-heading">Resume Preview</h1>
         <button onClick={handlePrint} className="btn btn--primary">
@@ -26,8 +26,8 @@ function Preview({ cvdata }) {
         <ProfessionalPreview cvdata={cvdata} />
         <EducationPreview cvdata={cvdata} />
         <ExperiencePreview cvdata={cvdata} />
-        <SkillsPreview cvdata={cvdata} />
         <ProjectsPreview cvdata={cvdata} />
+        <SkillsPreview cvdata={cvdata} />
         <AchievementsPreview cvdata={cvdata} />
       </div>
     </div>

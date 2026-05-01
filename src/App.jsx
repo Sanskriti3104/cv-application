@@ -45,13 +45,6 @@ function App() {
         description: "",
       }]
     },
-    skills: {
-      visible: true,
-      items: [{
-        category: "",
-        skillItems: "",
-      }],
-    },
     projects: {
       visible: true,
       items: [{
@@ -59,6 +52,13 @@ function App() {
         description: "",
         github: "",
         live: "",
+      }],
+    },
+    skills: {
+      visible: true,
+      items: [{
+        category: "",
+        skillItems: "",
       }],
     },
     achievements: {
@@ -77,12 +77,12 @@ function App() {
         <ProfessionalSummary cvdata={cvdata} setCvData={setCvData} />
         <Education cvdata={cvdata} setCvData={setCvData} />
         <Experience cvdata={cvdata} setCvData={setCvData} />
-        <Skills cvdata={cvdata} setCvData={setCvData} />
         <Projects cvdata={cvdata} setCvData={setCvData} />
+        <Skills cvdata={cvdata} setCvData={setCvData} />
         <Achievements cvdata={cvdata} setCvData={setCvData} />
       </div>
 
-      <Preview cvdata = {cvdata} />
+      <Preview cvdata={cvdata} />
     </div>
   );
 }

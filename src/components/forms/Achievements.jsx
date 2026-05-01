@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSectionVisibility from "../../hooks/useSectionVisibility";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -6,6 +6,10 @@ function Achievements({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.achievements.items[0]);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    setformdata(cvdata.achievements.items[0]);
+  }, [cvdata.achievements]);
+  
   const { toggleSection } = useSectionVisibility(setCvData, "achievements");
 
   const handleChange = (value) => {
@@ -47,9 +51,8 @@ function Achievements({ cvdata, setCvData }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`section achievements ${
-        !cvdata.achievements.visible ? "section--hidden" : ""
-      }`}
+      className={`section achievements ${!cvdata.achievements.visible ? "section--hidden" : ""
+        }`}
       id="achievements-section"
     >
       <div className="section__header">

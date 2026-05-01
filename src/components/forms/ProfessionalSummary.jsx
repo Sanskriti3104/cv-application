@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSectionVisibility from "../../hooks/useSectionVisibility";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -6,6 +6,10 @@ function ProfessionalSummary({ cvdata, setCvData }) {
   const [formdata, setformdata] = useState(cvdata.professionalSummary.text);
   const [errors, setErrors] = useState({});
 
+  useEffect(() => {
+    setformdata(cvdata.professionalSummary.text);
+  }, [cvdata.professionalSummary]);
+  
   const { toggleSection } = useSectionVisibility(setCvData, "professionalSummary");
 
   const validate = () => {

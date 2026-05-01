@@ -12,9 +12,9 @@ function PersonalPreview({ cvdata }) {
                 {p.phone && <span>{p.phone} | </span>}
                 {p.github && (
                     <a href={p.github} target="_blank" rel="noreferrer">
-                        GitHub |
+                        GitHub 
                     </a>
-                )}{" "}
+                )}{p.github && p.linkedin && " | "}
                 {p.linkedin && (
                     <a href={p.linkedin} target="_blank" rel="noreferrer">
                         LinkedIn

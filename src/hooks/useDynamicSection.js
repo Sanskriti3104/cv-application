@@ -1,10 +1,17 @@
 import { useCallback } from "react";
 
 function useDynamicSection(data, setdata, emptyObject) {
-  const handleChange = useCallback((index, field, value) => {
-    const updated = [...data];
-    updated[index][field] = value;
+  // const handleChange = useCallback((index, field, value) => {
+  //   const updated = [...data];
+  //   updated[index][field] = value;
 
+  //   setdata(updated);
+  // }, [data, setdata]);
+
+  const handleChange = useCallback((index, field, value) => {
+    const updated = data.map((item, i) =>
+      i === index ? { ...item, [field]: value } : item
+    );
     setdata(updated);
   }, [data, setdata]);
 

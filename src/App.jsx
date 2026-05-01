@@ -32,7 +32,6 @@ function App() {
         marks: "",
         start: "",
         end: "",
-        description: "",
       }]
     },
     experience: {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import PersonalDetail from "./components/forms/PersonalDetail.jsx";
 import ProfessionalSummary from "./components/forms/ProfessionalSummary.jsx";
@@ -8,65 +8,74 @@ import Skills from "./components/forms/Skills.jsx";
 import Projects from "./components/forms/Projects.jsx";
 import Achievements from "./components/forms/Achievements.jsx";
 
-import Preview from "./components/preview/Preview.jsx"
+import Preview from "./components/preview/Preview.jsx";
 
 function App() {
-  const [cvdata, setCvData] = useState({
-    personal: {
-      name: "",
-      place: "",
-      email: "",
-      phone: "",
-      linkedin: "",
-      github: ""
-    },
-    professionalSummary: {
-      visible: true,
-      text: ""
-    },
-    education: {
-      visible: true,
-      items: [{
-        institute: "",
-        degree: "",
-        marks: "",
-        start: "",
-        end: "",
-      }]
-    },
-    experience: {
-      visible: true,
-      items: [{
-        company: "",
-        role: "",
-        start: "",
-        end: "",
-        description: "",
-      }]
-    },
-    projects: {
-      visible: true,
-      items: [{
-        title: "",
-        description: "",
-        github: "",
-        live: "",
-      }],
-    },
-    skills: {
-      visible: true,
-      items: [{
-        category: "",
-        skillItems: "",
-      }],
-    },
-    achievements: {
-      visible: true,
-      items: [{
-        description: "",
-      }],
-    },
+  const [cvdata, setCvData] = useState(() => {
+    const savedData = localStorage.getItem("cvdata");
+    return savedData
+      ? JSON.parse(savedData)
+      : {
+          personal: {
+            name: "",
+            place: "",
+            email: "",
+            phone: "",
+            linkedin: "",
+            github: ""
+          },
+          professionalSummary: {
+            visible: true,
+            text: ""
+          },
+          education: {
+            visible: true,
+            items: [{
+              institute: "",
+              degree: "",
+              marks: "",
+              start: "",
+              end: "",
+            }]
+          },
+          experience: {
+            visible: true,
+            items: [{
+              company: "",
+              role: "",
+              start: "",
+              end: "",
+              description: "",
+            }]
+          },
+          projects: {
+            visible: true,
+            items: [{
+              title: "",
+              description: "",
+              github: "",
+              live: "",
+            }],
+          },
+          skills: {
+            visible: true,
+            items: [{
+              category: "",
+              skillItems: "",
+            }],
+          },
+          achievements: {
+            visible: true,
+            items: [{
+              description: "",
+            }],
+          },
+        };
   });
+
+  useEffect(() => {
+    localStorage.setItem("cvdata", JSON.stringify(cvdata));
+  }, [cvdata]);
 
   return (
     <div className="app-container">
